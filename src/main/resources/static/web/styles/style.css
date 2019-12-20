@@ -1,0 +1,270 @@
+.grid-stack-item-content {
+    background-repeat: no-repeat;
+    
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+}
+
+.carrierHorizontal{
+    background-image: url('ships/carrier.png');
+    background-size: 85% 100%;
+    background-position: center;
+}
+
+.carrierVertical{
+    background-image: url('ships/carrier_vertical.png');
+    background-size: 100% 85%;
+    background-position: center;
+    width: 45px !important;
+}
+
+.battleshipHorizontal{
+    background-image: url('ships/battleship.png');
+    background-size: 85% 100%;
+    background-position: center;
+}
+
+.battleshipVertical{
+    background-image: url('ships/battleship_vertical.png');
+    background-size: 100% 85%;
+    background-position: center;
+    width: 45px !important;
+}
+
+.submarineHorizontal{
+    background-image: url('ships/submarine.png');
+    background-size: 90% 100%;
+    background-position: center;
+}
+
+.submarineVertical{
+    background-image: url('ships/submarine_vertical.png');
+    background-size: 100% 90%;
+    background-position: center;
+    width: 45px !important;
+}
+
+.destroyerHorizontal{
+    background-image: url('ships/destroyer.png');
+    background-size: 100% 150%;
+    background-position: center;
+}
+
+.destroyerVertical{
+    background-image: url('ships/destroyer_vertical.png');
+    background-size: 150% 100%;
+    background-position: center;
+    width: 45px !important;
+}
+
+.patrol_boatHorizontal{
+    background-image: url('ships/patrol_boat.png');
+    background-size: 100% 150%;
+    background-position: center;
+}
+
+.patrol_boatVertical{
+    background-image: url('ships/patrol_boat_vertical.png');
+    background-size: 150% 100%;
+    background-position: center;
+    width: 45px !important;
+}
+
+
+
+.grid-ships{
+    background-image: url(ocean.gif);
+    background-size: cover;
+    border: 2px solid rgb(128,128,128);
+    border-radius: 10px;
+    height: 499px;
+    width: 499px;
+    margin: auto;
+    /* margin-top: 10vh */
+}
+
+.grid-ships-2{
+    background-image: url(ocean.gif);
+    background-size: cover;
+    border: 2px solid rgb(128,128,128);
+    border-radius: 6px;
+    height: 378px;
+    width: 378px;
+    margin: auto;
+    /* margin-top: 10vh */
+}
+
+#grid{
+    margin: 45px 0 0 45px;
+    position: absolute;
+    width: 450px;
+ 
+}
+
+
+
+/* CSS written by Peste Vasile Alexandru */
+[data-logo-loader]
+{
+    display: table;
+    margin: auto;
+}
+[data-logo-loader] hr:first-child
+{
+    display: block;
+    margin: 0;
+    width: 10rem; height: 5rem;
+  
+    background-image: url("../images/destroyer.png");
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+    border: none;
+    
+    opacity: 1
+}
+
+[data-logo-loader] hr:last-child
+{
+    transition: width 0.1s;
+    
+    position: absolute;
+    display: block;
+    margin: 0;
+    width: 2rem; height: 5rem;
+  
+    transform: translateY(-100%);
+    background-image: url("../images/destroyer_red.png");
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+    border: none
+}
+
+[data-logo-loader]:hover hr:last-child {
+    width: 50%;
+}
+/* CSS written by Peste Vasile Alexandru */
+
+#Icon {
+    position: absolute;
+    width: 5em;
+    height: 2em;
+    /* border: 0.125em solid blue; */
+    border-radius: 0.2em;
+    background-image: url('ships/destroyer.png');
+    background-size: 100% 150%;
+    background-position: center;
+    mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+}
+
+#fillIcon {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #ff000087;
+}
+#fillIcon div{
+text-align: center;
+border: 1px white solid;
+width: 50%;
+}
+
+#IconText {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    line-height: 150%;
+    text-align: center;
+    color: #cccccc;
+    font-weight: bold;
+    font-family: consolas;
+    font-size: 1.5em;
+}
+
+
+
+.grid-wrapper{
+    display: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.grid-cell{
+    display: flex;
+    box-sizing: border-box;
+    width: 45px;
+    height: 45px;
+    border: 1.3px solid rgb(128,128,128);
+    border-radius: 10px;
+    vertical-align: middle;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-cell-2{
+    display: flex;
+    box-sizing: border-box;
+    width: 34px;
+    height: 34px;
+    border: 1.3px solid rgb(128,128,128);
+    border-radius: 6px;
+    vertical-align: middle;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-cell span, .grid-cell-2 span{
+    
+    margin: auto
+}
+
+.busy-cell{
+    background-color: rgba(0,119,190,0.5);
+    
+}
+
+/* #grillas{
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+#salvo_history{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+table{
+    border-collapse: separate !important;
+}
+
+#ships-grid-row0 .grid-cell, #ships-grid-row0 .grid-cell-2{
+    background-color: rgba(170,169,173,0.7);
+}
+
+thead .grid-cell,thead .grid-cell-2{
+    background-color: rgba(170,169,173,0.7);
+}
+
+.grid-cell:first-child, .grid-cell-2:first-child{
+    background-color: rgba(170,169,173,0.7);
+}
+
+#alert-text{
+    color: red;
+    text-align: center;
+    display: block;
+}
+
+

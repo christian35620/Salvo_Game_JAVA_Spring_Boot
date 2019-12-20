@@ -1,0 +1,77 @@
+.ship-piece{
+    background-color: rgba(0,119,190,0.5);
+}
+
+.ship-piece-hited{
+    /* background-color: crimson; */
+    background-image: url('../images/fire-icon-png-4.png');
+    background-size: 100% 100%;
+    background-position: center;
+    
+}
+
+.salvo{
+    background-image: url('../images/water.png');
+    background-size: 100% 100%;
+    background-position: center;
+    /* background-colorgb(187, 120, 96)red;
+    pointer-events: none; */
+}
+
+#carrier_e, #battleship_e, #destroyer_e, #submarine_e,#patrol_boat_e{
+    height: 5rem;
+}
+
+.enemy_fleet{
+    text-align: center;
+    font-size: 100%;
+}
+
+#table_head{
+    padding: 2px;
+}
+
+#carrier_e{
+    background-image: url('../images/carrier.png');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#battleship_e{
+    background-image: url('../images/battleship.png');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#destroyer_e{
+    background-image: url('../images/destroyer.png');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#submarine_e{
+    background-image: url('../images/submarine.png');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#patrol_boat_e{
+    background-image: url('../images/patrol_boat.png');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.shot{
+    background-color: rgb(241, 245, 13);
+}
+
+#salvo_button{
+    display: flex;
+    justify-content: center;
+}
+

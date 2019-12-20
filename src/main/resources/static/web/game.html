@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ships locations!</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./styles/game.css">
+    <link rel="stylesheet" type="text/css" href="./styles/salvo_general.css">
+    <link rel="stylesheet" href="./styles/login.css">
+       
+    <!-- <link rel="stylesheet" href="dist/gridstack.css" />
+    <link rel="stylesheet" href="dist/gridstack-extra.css" /> -->
+    <link rel="stylesheet" href="./styles/style.css" />
+</head>
+<body>
+    <div id="app">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div>
+                    <a href="http://localhost:8080/web/games.html" class="btn btn-glass btn-primary">
+                        <i class="fa fa-fw fa-lg fa-chevron-left"></i> Back to Game List
+                    </a>
+                </div>
+                <ul class="navbar-nav ml-auto">
+                    <li id="loggedIn" class="heading" v-show="loggedIn==1">
+                        <span id="playerInfo"></span>   
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        
+        <section id="grillas" class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-4">
+                    <table id="your_fleet" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Your Fleet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id='Icon'>
+                                        <figure data-logo-loader>
+                                            <hr>
+                                            <hr>
+                                        </figure>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr><td>b</td></tr>
+                            <tr><td>c</td></tr>
+                            <tr><td>d</td></tr>
+                            <tr><td>e</td></tr>
+                        </tbody>
+                    </table>
+                </div> end of col-4 -->
+                <div class="col">
+                    <h2>Game Board</h2>
+                    <table id="ships" class="grid-ships-2">
+                        <thead>
+                            <tr class="grid-row">
+                                <th class="grid-cell-2"></th>
+                                <template v-for="i in 10">
+                                    <th :id="'th_'+(i-1)" class="grid-cell-2">{{i}}</th>
+                                </template>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template v-for="letter in letters">
+                                <tr class="grid-row">
+                                    <td class="grid-cell-2">{{letter}}</td>
+                                    <template v-for="j in 10">
+                                        <td :id="letter+j" class="grid-cell-2"></td>
+                                    </template>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div> <!-- end of col-4 -->
+                <div class="col">
+                    <h2>Salvoes Fired</h2>
+                    <table id="salvoes" class="grid-ships-2">
+                        <thead>
+                            <tr class="grid-row">
+                                <th class="grid-cell-2"></th>
+                                <template v-for="i in 10">
+                                    <th :id="'th_'+(i-1)" class="grid-cell-2">{{i}}</th>
+                                </template>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template v-for="letter in letters">
+                                <tr class="grid-row">
+                                    <td class="grid-cell-2">{{letter}}</td>
+                                    <template v-for="j in 10">
+                                        <td :id="letter+j" class="grid-cell-2" @click.prevent="placeShot(letter+j,'./audio/Artillery+2.mp3')" ></td>
+                                    </template>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                
+                    <div id="salvo_button">
+                        <a @click="placeSalvo" class="btn btn-glass btn-primary">
+                            <i class="fa fa-fw fa-lg fa-chevron-right"></i> Shoot your Salvo round!
+                        </a>
+                    </div>
+                </div> <!-- end of col-4 -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col">
+                    <table id="enemy_fleet" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th  id="table_head" colspan="5">Enemy Fleet</th>
+                            </tr>
+                            <tr>
+                                <th>Carrier</th>
+                                <th id="table_head">Battleship</th>
+                                <th id="table_head">Destroyer</th>
+                                <th id="table_head">Submarine</th>
+                                <th id="table_head">Patrol Boat</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td class="enemy_fleet" id="carrier_e"></td>
+                                <td class="enemy_fleet" id="battleship_e"></td>
+                                <td class="enemy_fleet" id="destroyer_e"></td>
+                                <td class="enemy_fleet" id="submarine_e"></td>
+                                <td class="enemy_fleet" id="patrol_boat_e"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- end of col-12 -->
+            </div><!-- end of row -->
+        </section> <!-- end of container -->               
+    </div> <!-- end of vue-app -->
+
+    <script src="./scripts/jquery-3.3.1.min.js"></script>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./scripts/game.js"></script>
+    <script src="./scripts/players.js"></script>
+</body>
+</html>

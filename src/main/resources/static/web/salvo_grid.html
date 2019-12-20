@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salvo Grid!</title>
+    <link rel="stylesheet" type="text/css" href="./styles/game.css">
+    <link rel="stylesheet" href="./styles/login.css">
+</head>
+<body>
+    <div id="app">
+        <hr><hr>
+        <div>
+            <span id="playerInfo"></span>
+        </div>
+        <section>
+            <h2>Salvoes Fired</h2>
+            <table id="" border="1">
+                <thead>
+                    <th></th>
+                    <template v-for="i in 10">
+                        <th :id="'th_'+(i-1)">{{i}}</th>
+                    </template>
+                </thead>
+                <tbody>
+                    <template v-for="letter in letters">
+                        <tr>
+                            <td>{{letter}}</td>
+                            <template v-for="j in 10">
+                                <td :id="letter+j" @click="placeShot(letter+j)" @click.prevent="playSound('./audio/Artillery+2.mp3')"></td>
+                            </template>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </section>
+        <button @click="placeSalvo">Shoot your Salvo round!</button>
+    </div>
+    <script src="./scripts/jquery-3.3.1.min.js"></script>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="./scripts/game.js"></script> -->
+    <script src="./scripts/players.js"></script>
+</body>
+</html>

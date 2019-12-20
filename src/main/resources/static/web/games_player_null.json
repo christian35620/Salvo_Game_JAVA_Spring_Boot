@@ -1,0 +1,130 @@
+{
+    "leaderboard" : [ {
+      "id" : 1,
+      "email" : "j.bauer@ctu.gov",
+      "totalScore" : 1.5,
+      "won" : 1.0,
+      "lost" : 0.0,
+      "tied" : 1.0
+    }, {
+      "id" : 2,
+      "email" : "c.obrian@ctu.gov",
+      "totalScore" : 0.5,
+      "won" : 0.0,
+      "lost" : 1.0,
+      "tied" : 1.0
+    }, {
+      "id" : 3,
+      "email" : "kim_bauer@gmail.com",
+      "totalScore" : 0.0,
+      "won" : 0.0,
+      "lost" : 0.0,
+      "tied" : 0.0
+    }, {
+      "id" : 4,
+      "email" : "t.almeida@ctu.gov",
+      "totalScore" : 0.0,
+      "won" : 0.0,
+      "lost" : 0.0,
+      "tied" : 0.0
+    } ],
+    "currentPlayer" : "N/A",
+    "games" : [ {
+      "id" : 1,
+      "created" : "2019-11-09T14:22:55.935+0000",
+      "scores" : [ {
+        "score" : 1.0
+      }, {
+        "score" : 0.0
+      } ],
+      "gamePlayers" : [ {
+        "id" : 1,
+        "joinDate" : "2019-11-09T14:22:55.981+0000",
+        "player" : {
+          "playerEmail" : "j.bauer@ctu.gov",
+          "playerID" : 1
+        },
+        "score" : 1.0
+      }, {
+        "id" : 2,
+        "joinDate" : "2019-11-09T14:22:55.981+0000",
+        "player" : {
+          "playerEmail" : "c.obrian@ctu.gov",
+          "playerID" : 2
+        },
+        "score" : 0.0
+      } ]
+    }, {
+      "id" : 2,
+      "created" : "2019-11-09T15:22:55.935+0000",
+      "scores" : [ {
+        "score" : 0.5
+      }, {
+        "score" : 0.5
+      } ],
+      "gamePlayers" : [ {
+        "id" : 3,
+        "joinDate" : "2019-11-09T14:22:55.981+0000",
+        "player" : {
+          "playerEmail" : "j.bauer@ctu.gov",
+          "playerID" : 1
+        },
+        "score" : 0.5
+      }, {
+        "id" : 4,
+        "joinDate" : "2019-11-09T14:22:55.981+0000",
+        "player" : {
+          "playerEmail" : "c.obrian@ctu.gov",
+          "playerID" : 2
+        },
+        "score" : 0.5
+      } ]
+    }, {
+      "id" : 3,
+      "created" : "2019-11-09T16:22:55.935+0000",
+      "scores" : [ ],
+      "gamePlayers" : [ {
+        "id" : 5,
+        "joinDate" : "2019-11-09T14:22:55.981+0000",
+        "player" : {
+          "playerEmail" : "c.obrian@ctu.gov",
+          "playerID" : 2
+        },
+        "score" : "N/A"
+      }, {
+        "id" : 6,
+        "joinDate" : "2019-11-09T14:22:55.981+0000",
+        "player" : {
+          "playerEmail" : "t.almeida@ctu.gov",
+          "playerID" : 4
+        },
+        "score" : "N/A"
+      } ]
+    }, {
+      "id" : 4,
+      "created" : "2019-11-09T17:22:55.935+0000",
+      "scores" : [ ],
+      "gamePlayers" : [ {
+        "id" : 7,
+        "joinDate" : "2019-11-09T14:22:55.981+0000",
+        "player" : {
+          "playerEmail" : "j.bauer@ctu.gov",
+          "playerID" : 1
+        },
+        "score" : "N/A"
+      } ]
+    }, {
+      "id" : 5,
+      "created" : "2019-11-09T14:24:36.933+0000",
+      "scores" : [ ],
+      "gamePlayers" : [ {
+        "id" : 8,
+        "joinDate" : "2019-11-09T14:24:36.939+0000",
+        "player" : {
+          "playerEmail" : "j.bauer@ctu.gov",
+          "playerID" : 1
+        },
+        "score" : "N/A"
+      } ]
+    } ]
+  }

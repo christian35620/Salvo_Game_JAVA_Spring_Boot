@@ -1,0 +1,195 @@
+var app = new Vue({  
+    el: '#app',  
+    data: {    
+        datos: [],
+        username:"",
+        password:"",
+        loggedIn:0,
+        currentUser:0
+    },
+    created(){
+        this.selectURL();
+        this.validateUser();
+    },
+    methods: {
+        validateUser(){
+            this.getData(this.url);
+            
+        },
+        formAction(action){
+            switch (action) {
+                case 'login':
+                    this.login();
+                    break;
+                case 'register':
+                    this.register();
+                    break;
+                default:
+                    break;
+            }
+        },
+        wrapGame(el, link) { // link wrapper function
+            return `<a href="${link}">${el}</a>`;
+        },
+        element(i) {
+            const gameID = this.datos.games[i].id;
+            const gameCreated=this.datos.games[i].created;
+            const currentPlayer=this.datos.currentPlayer.playerEmail;
+            const gamePlayer0=this.datos.games[i].gamePlayers[0].player.playerEmail;
+            const gamePlayer1=this.datos.games[i].gamePlayers[1].player.playerEmail;
+            const gamePlayer0Id=this.datos.games[i].gamePlayers[0].id;
+            const gamePlayer1Id=this.datos.games[i].gamePlayers[1].id;
+            if (currentPlayer==gamePlayer0) {
+                const url = "http://localhost:8080/web/game.html"   //this.events[i].url || null;
+            } else if (currentPlayer==gamePlayer1) {
+                
+            }
+            // const span = `<span style="color: green">${name}</span>`;
+            let gameRow= `<td>${gameID}</td>`+
+                            `<td>${gameCreated}</td>`+
+                            `<td>${gamePlayer0}</td>`+
+                            `<td>${gamePlayer1}</td>`
+            return (url) ? wrapGame(gameRow, url) : gameRow;
+        },
+        selectURL() {    
+            this.url='http://localhost:8080/api/games';  /*usar para datos de localhost*/
+        },
+        getData(url) {
+            var self=this;
+            fetch(url, {
+                method: 'GET'
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    console.log(response);
+                    return response.json()
+                  } else {
+                    return Promise.reject('fetch promise rejected!')
+                  }
+            })
+            .then(function(datos) {
+                self.datos=datos; 
+                if (datos.currentPlayer!="N/A") {
+                    self.currentUser=self.datos.currentPlayer.playerID;
+                    self.username=self.datos.currentPlayer.playerEmail;
+                    self.loggedIn=1;
+                }
+            })
+            .catch(function(err) {
+                console.error("el error sucedido es: "+err);
+            });
+            
+        },
+        loginData(url) {
+            var self=this;
+            fetch(url, {
+                method: 'GET'
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json()
+                  } else {
+                    return Promise.reject('fetch promise rejected!')
+                  }
+            })
+            .then(function(datos) {
+                self.datos=datos; 
+                if (datos.currentPlayer!="N/A") {
+                    self.currentUser=self.datos.currentPlayer.playerID;
+                    self.username=self.datos.currentPlayer.playerEmail;
+                    self.loggedIn=1;
+                }
+            })
+            .catch(function(err) {
+                console.error("el error sucedido es: "+err);
+            });
+            
+        },
+        login() {
+            var self=this;
+            let formData = new FormData();
+            formData.append('username', this.username);
+            formData.append('password', this.password);
+            
+            const data = new URLSearchParams(formData);
+
+            fetch("http://localhost:8080/api/login", {
+                method: 'POST',
+                credentials: 'same-origin',
+                body: data
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    console.log(response);
+                } else {
+                    return Promise.reject('fetch promise rejected!')
+                }
+            })
+            .then(function() {
+                self.loggedIn=1;
+                self.loginData(self.url);
+                document.location.replace("http://localhost:8080/web/game.html");
+            })
+            .catch(function(err) {
+                console.error("el error sucedido es: "+err);
+            })
+        },
+        register() {
+            var self=this;
+            let formData = new FormData();
+            formData.append('email', this.username);
+            formData.append('password', this.password);
+            
+            const data = new URLSearchParams(formData);
+
+            fetch("http://localhost:8080/api/players", {
+                method: 'POST',
+                credentials: 'same-origin',
+                body: data
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    console.log(response);
+                } else {
+                    return Promise.reject('fetch promise rejected!')
+                }
+            })
+            .then(function() {
+                self.loggedIn=1;
+                self.login();
+            })
+            .catch(function(err) {
+                console.error("el error sucedido es: "+err);
+            });  
+        },
+        logout() {
+            var self=this;
+            let formData = new FormData();
+            formData.append('username', this.username);
+            formData.append('password', this.password);
+            
+            const data = new URLSearchParams(formData);
+
+            fetch("http://localhost:8080/api/logout", {
+                method: 'POST',
+                credentials: 'same-origin',
+                body: data
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    console.log(response);
+                  } else {
+                    return Promise.reject('fetch promise rejected!')
+                  }
+            })
+            .then(function() {
+                console.log("logged out");
+                self.loggedIn=0
+                document.location.replace("http://localhost:8080/web/games.html");
+            })
+            .catch(function(err) {
+                console.error("el error sucedido es: "+err);
+            });
+        }
+    }
+});

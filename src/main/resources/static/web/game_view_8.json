@@ -1,0 +1,104 @@
+{
+  "id" : 5,
+  "created" : "2019/12/17  18:50:50",
+  "scores" : [ ],
+  "gamePlayers" : [ {
+    "id" : 8,
+    "joinDate" : "2019-12-17T21:50:50.255+0000",
+    "player" : {
+      "playerEmail" : "j.bauer@ctu.gov",
+      "playerID" : 1
+    },
+    "score" : "N/A"
+  }, {
+    "id" : 9,
+    "joinDate" : "2019-12-17T21:51:10.263+0000",
+    "player" : {
+      "playerEmail" : "c.obrian@ctu.gov",
+      "playerID" : 2
+    },
+    "score" : "N/A"
+  } ],
+  "ships" : [ {
+    "type" : "battleship",
+    "location" : [ "A7", "A8", "A9", "A10" ]
+  }, {
+    "type" : "patrol_boat",
+    "location" : [ "A1", "A2" ]
+  }, {
+    "type" : "submarine",
+    "location" : [ "C9", "D9", "E9" ]
+  }, {
+    "type" : "destroyer",
+    "location" : [ "I8", "I9", "I10" ]
+  }, {
+    "type" : "carrier",
+    "location" : [ "J1", "J2", "J3", "J4", "J5" ]
+  } ],
+  "salvoes" : [ {
+    "turn" : 1,
+    "player" : 1,
+    "location" : [ "F5", "C8", "A4", "D2", "I1" ],
+    "hits" : [ "I1" ],
+    "sunk" : [ ]
+  }, {
+    "turn" : 3,
+    "player" : 1,
+    "location" : [ "G10", "H1", "G1", "F1", "E1" ],
+    "hits" : [ "G10", "H1", "G1", "F1" ],
+    "sunk" : [ {
+      "type" : "submarine",
+      "location" : [ "G10", "H10", "I10" ]
+    }, {
+      "type" : "battleship",
+      "location" : [ "F1", "G1", "H1", "I1" ]
+    } ]
+  }, {
+    "turn" : 2,
+    "player" : 1,
+    "location" : [ "J5", "J9", "I10", "H10", "J10" ],
+    "hits" : [ "J5", "J9", "I10", "H10", "J10" ],
+    "sunk" : [ ]
+  }, {
+    "turn" : 1,
+    "player" : 2,
+    "location" : [ "H4", "A1", "A10", "E7", "C9" ],
+    "hits" : [ "A1", "A10", "C9" ],
+    "sunk" : [ ]
+  }, {
+    "turn" : 2,
+    "player" : 2,
+    "location" : [ "D9", "E9", "A2", "E3", "I9" ],
+    "hits" : [ "D9", "E9", "A2", "I9" ],
+    "sunk" : [ {
+      "type" : "patrol_boat",
+      "location" : [ "A1", "A2" ]
+    }, {
+      "type" : "submarine",
+      "location" : [ "C9", "D9", "E9" ]
+    } ]
+  }, {
+    "turn" : 3,
+    "player" : 2,
+    "location" : [ "I8", "I10", "A7", "G2", "J3" ],
+    "hits" : [ "I8", "I10", "A7", "J3" ],
+    "sunk" : [ {
+      "type" : "patrol_boat",
+      "location" : [ "A1", "A2" ]
+    }, {
+      "type" : "submarine",
+      "location" : [ "C9", "D9", "E9" ]
+    }, {
+      "type" : "destroyer",
+      "location" : [ "I8", "I9", "I10" ]
+    } ]
+  } ],
+  "statistics" : {
+    "id" : 1,
+    "email" : "j.bauer@ctu.gov",
+    "totalScore" : 1.5,
+    "won" : 1.0,
+    "lost" : 0.0,
+    "tied" : 1.0
+  }
+}

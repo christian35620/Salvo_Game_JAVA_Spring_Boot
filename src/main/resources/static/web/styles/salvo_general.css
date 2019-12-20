@@ -1,0 +1,25 @@
+html {
+    /* background-color:#000000; */
+    background-image:url('../images/battleship_1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-repeat:repeat-x; */
+ }
+ body {
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:85%;
+    background: transparent;
+ }
+
+ html, body{
+   height: 100%;
+ }
+ 
+ body, input, button {
+   font-family: 'Source Sans Pro', sans-serif;
+ }
+ 
+ button:focus {
+   outline: 0;
+ }

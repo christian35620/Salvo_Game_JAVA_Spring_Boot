@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ships locations!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    
+    <link rel="stylesheet" type="text/css" href="./styles/game.css">
+    <link rel="stylesheet" type="text/css" href="./styles/salvo_general.css">
+    <link rel="stylesheet" href="./styles/login.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div>
+                    <button @click="createGame" v-show="loggedIn==1" class="btn btn-glass btn-primary">Create new game</button>
+                </div>
+                <ul class="navbar-nav ml-auto">
+                    <li id="loggedIn" class="heading" v-show="loggedIn==1">
+                        <h2 class="px-1" id="username">{{username}}</h2> 
+                        <form @submit="logout()" class="px-4" id="logoutForm" action="#">
+                            <button  type="submit" class="btn btn-glass btn-primary">Logout</button>
+                        </form>    
+                    </li>
+                    <li id="loggedOut" v-if="loggedIn==0" class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+                            Sign In
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right login">
+                            <form class="px-4 py-3">
+                                <div class="form-group d-flex">
+                                <span class="input-group-addon d-flex justify-content-center align-items-center"><i class="fa fa-user"></i></span>
+                                <input v-model="username" type="text" class="form-control" placeholder="email@example.com">
+                                </div>
+                                <div class="form-group d-flex">
+                                <span class="input-group-addon d-flex justify-content-center align-items-center"><i class="fa fa-lock"></i></span>
+                                <input v-model="password" type="password" class="form-control" placeholder="Password">
+                                </div>
+
+                                <button @click.prevent="formAction('login')" type="submit" value="submit_login" class="float">Login</button>
+                                <div class="dropdown-divider"></div>
+                                <button @click.prevent="formAction('register')" type="submit" value="submit_register" class="float">Register</button>
+                            </form>  
+                        </div>    
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <hr><hr>
+        <div class="container">   
+            <div class="row">
+            <div class="col-8">
+            <h2 class="font-weight-bolder text-success">Games</h2>
+            <table class="table table-hover">
+                <thead class='thead-dark'>
+                    <tr><th>Game</th>
+                        <th>Creation Time</th>
+                        <th>Player 1</th>
+                        <th>Player 2</th></tr>
+                </thead>
+                <tbody>
+                    <template v-for="game in datos.games">
+                        <tr>
+                            <td>{{game.id}}</td>
+                            <td><component :is="game.gpId?'a':'span'" :class="game.gpId?'btn btn-primary':''" :href="'http://localhost:8080/web/game.html?gp='+game.gpId" target="_blank">{{game.created}}
+                            </component>
+                        </td>
+                            <td v-if="game.gamePlayers[0]!==undefined">{{game.gamePlayers[0].player.playerEmail}}</td>
+                            <td v-if="game.gamePlayers[1]!==undefined">{{game.gamePlayers[1].player.playerEmail}}</td>
+                            <template v-if="joinGameButton(game)"><td @click="joinGame(game.id)"><button class="btn btn-glass btn-primary">Join Game</button></td></template>
+                            <template v-else-if="game.gamePlayers[1]==undefined"><td><span>Waiting for an opponent</span></td></template>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            </div>
+            <div class="col-4">
+                <h2 class="font-weight-bolder text-success">Leaderboard</h2>
+                <table class="table table-hover">
+                    <thead class='thead-dark '>
+                        <tr><th>User</th>
+                            <th>Won</th>
+                            <th>Lost</th>
+                            <th>Tied</th>
+                            <th>Total Score</th></tr>
+                    </thead>
+                    <tbody>
+                        <template v-for="leader in datos.leaderboard">
+                            <tr>
+                                <td>{{leader.email}}</td>
+                                <td>{{leader.won}}</td>
+                                <td>{{leader.lost}}</td>
+                                <td>{{leader.tied}}</td>
+                                <td>{{leader.totalScore}}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <!-- <script src="./scripts/jquery-3.3.1.min.js"></script> -->
+   
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="./scripts/game.js"></script> -->
+    <script src="./scripts/players.js"></script>
+
+</body>
+</html>
